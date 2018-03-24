@@ -62,6 +62,6 @@ int main(){
 		printf("Coordenadas (Formato: (X,Y)): ");
 		scanf(" (%i,%i)", &x, &y);
 
-		m_original[x][y] = 1;
+		m_original[y][x] = 1;
 		interfaz();
 	}
