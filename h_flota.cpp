@@ -6,8 +6,11 @@
 #define N 25
 
 void interfaz();
+void interfaz_j2();
 void coor_j1();
+void coor_j2();
 void seleccionar();
+void seleccionar_j2();
 
 int m_original[N][N];
 int m_original2[N][N];
@@ -20,9 +23,10 @@ int tamano;
 int main(){
 
 	for(int f = 0; f < N; f++)
-		for(int c = 0; c < N; c++)
+		for(int c = 0; c < N; c++){
 			m_original[f][c] = 0;
-
+			m_original2[f][c] = 0;
+		}
 
 
 	interfaz();
@@ -62,14 +66,49 @@ void interfaz() {
 
 }
 
+void interfaz_j2() {
+        system("clear");
+        printf("\n");
+        printf("\t\t\t");
+        for(int f = 0; f < N; f++){
+                if(f <= 9 )
+                        printf("|%i ", f);
+                else
+                        printf("|%i", f);
+        }
+        printf("\n");
+        printf("\t\t\t");
+        for(int f = 0; f < N; f++)
+                printf("|__");
+        printf("\n");
+        printf("\t\t     ");
+        for(int f = 0; f < N; f++){
+                if( f <= 9)
+                        printf(" %i_|", f);
+                else
+                        printf(" %i|", f);
+                for(int c = 0; c < N; c++){
+                        printf("%i_|", m_original[f][c]);
+                }
+                printf("\n");
+                printf("\t\t     ");
+        }
+
+        seleccionar_j2();
+
+}
+
+
 void seleccionar() {
 	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
 	scanf(" %i", &posicion);
 	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
 	scanf(" %i", &barco);
 
-	if(barco == 1)
+	if(barco == 1){
 		tamano = 5;
+		barcos++;
+	}
 	if(barco == 2)
 		tamano = 4;
 	if(barco == 3)
@@ -96,6 +135,25 @@ void coor_j1 () {
 
 }
 
+void seleccionar_j2() {
+        printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
+        scanf(" %i", &posicion);
+        printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
+        scanf(" %i", &barco);
+
+        if(barco == 1)
+                tamano = 5;
+        if(barco == 2)
+                tamano = 4;
+        if(barco == 3)
+                tamano = 3;
+        if(barco == 4)
+                tamano = 2;
+
+        coor_j2();
+}
+
+
 void coor_j2 () {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
@@ -103,10 +161,10 @@ void coor_j2 () {
 
 	if(posicion == 1)
 		for(int c = x; c < (x + tamano); c++)
-			m_original2[c][y] = 1;
+			m_original2[c][y2] = 1;
 	if(posicion == 2)
 		for(int c = y; c < (y + tamano); c++)
-			m_original2[x][c] = 1;
+			m_original2[x2][c] = 1;
 
 	interfaz();
 }
