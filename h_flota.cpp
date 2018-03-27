@@ -19,7 +19,7 @@ int x, x2;
 int y, y2;
 int posicion;
 int barco;
-int tamano;
+int tamano = 0;
 int jugador = 0;
 int portaviones = 0, destructor = 0, fragata = 0, crucero = 0;
 bool rellenar = false;
@@ -128,52 +128,14 @@ void seleccionar() {
 		printf("JUGADOR 1");
 	else
 		printf("JUGADOR 2");
-
+	
 	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
 	scanf(" %i", &posicion);
-	printf("\n\t1) portaviones\n\t2) destructor\n\t3) fragata\n\t4) crucero\n\tBarco: ");
-	scanf(" %i", &barco);
+	
+	for (int c = 2 ; c < 6 ; c++ ){
+		tamaño = c;
+		printf ("Barco%i:",tamaño);
 
-	if(portaviones == 1 && barco == 1) {
-		printf("No puedes poner más portaviones\n");
-		funciones--;
-		seleccionar();
-	}
-	if(destructor == 2 && barco == 2) {
-		printf("No puedes poner más destructores\n");
-		funciones--;
-		seleccionar();
-	}
-	if(fragata == 1 && barco == 3) {
-                printf("No puedes poner más fragatas\n");
-		funciones--;
-                seleccionar();
-	}
-	if(crucero == 2 && barco == 4) {
-                printf("No puedes poner más cruceros\n");
-		funciones--;
-                seleccionar();
-	}
-
-
-	if(barco == 1 && portaviones == 0){
-		tamano = 5;
-		portaviones++;
-	}
-
-	if(barco == 2  && destructor < 2){
-		tamano = 4;
-		destructor++;
-	}
-	if(barco == 3 && fragata == 0){ 
-		tamano = 3;
-		fragata++;
-	}
-
-	if(barco == 4 && crucero <2){
-		tamano = 2;
-		crucero++;
-	}
 }
 
 void coor_j1 () {
@@ -188,16 +150,6 @@ void coor_j1 () {
 		for(int c = y; c < (y + tamano); c++)
 			m_original[x][c] = 1;
 
-	//interfaz();
-
-}
-void ReiniciarBarcos() {
-	if(portaviones == 1 && destructor == 2 && fragata ==1 && crucero == 2){
-		portaviones=0;
-		destructor=0;
-		fragata=0;
-		crucero=0;
-	}
 
 }
 /*void coor_j2 () {
