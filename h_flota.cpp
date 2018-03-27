@@ -21,9 +21,7 @@ int posicion;
 int barco;
 int tamano = 0;
 int jugador = 0;
-int portaviones = 0, destructor = 0, fragata = 0, crucero = 0;
 bool rellenar = false;
-int funciones;
 
 
 int main(){
@@ -36,21 +34,14 @@ int main(){
 			}
 		rellenar = true;
 	}
-
-	for(funciones = 0 ; funciones < 6 ; funciones++){
-		interfaz();	
-		seleccionar();
-		coor_j1();
-		interfaz();
-	}
-	ReiniciarBarcos();
-	/*	for(int c = 0 ; c < 6 ; c++){
-		interfaz();	
-		selecionar();
-		coor_j2;
-		interfaz_j2();
+	for(int j = 0 ; j < 2 ; j++)
+		jugador++;
+		for(int c = 0 ; c < 4 ; funciones++){
+			interfaz();	
+			seleccionar();
+			coor_j1();
+			interfaz();
 		}
-		ReiniciarBarcos();*/
 
 
 
@@ -138,11 +129,11 @@ void seleccionar() {
 
 }
 
-void coor_j1 () {
+void coor() {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
 	scanf(" (%i,%i)", &x, &y);
-
+	if(jugador == 0){
 	if(posicion == 1)
 		for(int c = x; c < (x + tamano); c++)
 			m_original[c][y] = 1;
@@ -150,20 +141,14 @@ void coor_j1 () {
 		for(int c = y; c < (y + tamano); c++)
 			m_original[x][c] = 1;
 
+	}
+	if(jugador == 1){
+	if(posicion == 1)
+		for(int c = x; c < (x + tamano); c++)
+			m_original2[c][y] = 1;
+	if(posicion == 2)
+		for(int c = y; c < (y + tamano); c++)
+			m_original2[x][c] = 1;
 
+	}
 }
-/*void coor_j2 () {
-
-  printf("Coordenadas (Formato: (X,Y)): ");
-  scanf(" (%i,%i)", &x2, &y2);
-
-  if(posicion == 1)
-  for(int c = x; c < (x + tamano); c++)
-  m_original2[c][y2] = 1;
-  if(posicion == 2)
-  for(int c = y; c < (y + tamano); c++)
-  m_original2[x2][c] = 1;
-
-  interfaz();
-  }*/
-
