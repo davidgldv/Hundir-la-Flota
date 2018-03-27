@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
-
 #define N 25
 
 void interfaz();
@@ -12,7 +11,7 @@ void interfaz_j2();
 void coor_j1();
 void coor_j2();
 void seleccionar();
-void seleccionar_j2();
+void ReiniciarBarcos();
 
 int m_original[N][N];
 int m_original2[N][N];
@@ -23,6 +22,7 @@ int barco;
 int tamano;
 int jugador = 0;
 bool rellanar = false;
+
 
 int main(){
 
@@ -35,7 +35,22 @@ int main(){
 		rellenar = true;
 	}
 	
+	for(int c = 0 ; c < 6 ; c++){
+	interfaz();	
 	selecionar();
+	coor_j1;
+	interfaz();
+	}
+	ReiniciarBarcos();
+	for(int c = 0 ; c < 6 ; c++){
+	interfaz();	
+	selecionar();
+	coor_j2;
+	interfaz_j2();
+	}
+	ReiniciarBarcos();
+
+	
 
 	return EXIT_SUCCESS;
 }
@@ -117,18 +132,18 @@ void seleccionar() {
 	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
 	scanf(" %i", &barco);
 
-	if(barco == 1 && portaviones == 0)
+	if(barco == 1 && portaviones == 0){
 		tamano = 5;
-		portaviones++;
-	if(barco == 2  && destructor < 2)
+		portaviones++;}
+	if(barco == 2  && destructor < 2){
 		tamano = 4;
-		destructor++;
-	if(barco == 3 && fragata == 0) 
+		destructor++;}
+	if(barco == 3 && fragata == 0){ 
 		tamano = 3;
-		fragata++;
-	if(barco == 4 && crucero <2)
+		fragata++;}
+	if(barco == 4 && crucero <2){
 		tamano = 2;
-		crucero++;
+		crucero++;}
 }
 
 void coor_j1 () {
@@ -146,15 +161,13 @@ void coor_j1 () {
 	interfaz();
 
 }
-void TodosPuestos() {
+void ReiniciarBarcos() {
 	if(portaviones == 0 && destructor == 2 && fragata ==1 && crucero == 2){
 		portaaviones=0;
 		desructor=0;
 		fragata=0;
 		crucero=0;
-	}
-	else
-	selecionar();
+	
 }
 void coor_j2 () {
 
