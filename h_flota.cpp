@@ -7,11 +7,8 @@
 #define N 10
 
 void interfaz();
-void interfaz_j2();
-void coor_j1();
-void coor_j2();
+void coor();
 void seleccionar();
-void ReiniciarBarcos();
 
 int m_original[N][N];
 int m_original2[N][N];
@@ -34,16 +31,14 @@ int main(){
 			}
 		rellenar = true;
 	}
-	for(int j = 0 ; j < 2 ; j++)
+	for(int j = 0 ; j < 2 ; j++){
 		jugador++;
-		for(int c = 0 ; c < 4 ; funciones++){
+		for(int c = 0 ; c < 5 ; funciones++){
 			interfaz();	
 			seleccionar();
-			coor_j1();
-			interfaz();
 		}
 
-
+	}
 
 	return EXIT_SUCCESS;
 }
@@ -69,53 +64,27 @@ void interfaz() {
 			printf(" %i_|", f);
 		else
 			printf(" %i|", f);
-		for(int c = 0; c < N; c++){
-			printf("%i_|", m_original[f][c]);
+		if(jugador == 1){
+			for(int c = 0; c < N; c++){
+				printf("%i_|", m_original[f][c]);
+			}
+			printf("\n");
+			printf("\t\t     ");
+		}	
+		if(jugador == 2){
+			for(int c = 0; c < N; c++){
+				printf("%i_|", m_original2[f][c]);
+			}
+			printf("\n");
+			printf("\t\t     ");
 		}
-		printf("\n");
-		printf("\t\t     ");
 	}
 
-	//seleccionar();
-
 }
-/*
-   void interfaz_j2() {
-   system("clear");
-   printf("\n");
-   printf("\t\t\t");
-   for(int f = 0; f < N; f++){
-   if(f <= 9 )
-   printf("|%i ", f);
-   else
-   printf("|%i", f);
-   }
-   printf("\n");
-   printf("\t\t\t");
-   for(int f = 0; f < N; f++)
-   printf("|__");
-   printf("\n");
-   printf("\t\t     ");
-   for(int f = 0; f < N; f++){
-   if( f <= 9)
-   printf(" %i_|", f);
-   else
-   printf(" %i|", f);
-   for(int c = 0; c < N; c++){
-   printf("%i_|", m_original[f][c]);
-   }
-   printf("\n");
-   printf("\t\t     ");
-   }
-
-   seleccionar_j2();
-
-   }
- */
 
 void seleccionar() {
 
-	if(jugador == 0)
+	if(jugador == 1)
 		printf("JUGADOR 1");
 	else
 		printf("JUGADOR 2");
@@ -123,17 +92,14 @@ void seleccionar() {
 	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
 	scanf(" %i", &posicion);
 	
-	for (int c = 2 ; c < 6 ; c++ ){
-		tamaño = c;
-		printf ("Barco%i:",tamaño);
-
+      /*Mañana declarar el valor del tamaño para los barcos*/
 }
 
 void coor() {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
 	scanf(" (%i,%i)", &x, &y);
-	if(jugador == 0){
+	if(jugador == 1){
 	if(posicion == 1)
 		for(int c = x; c < (x + tamano); c++)
 			m_original[c][y] = 1;
@@ -142,7 +108,7 @@ void coor() {
 			m_original[x][c] = 1;
 
 	}
-	if(jugador == 1){
+	if(jugador ==2){
 	if(posicion == 1)
 		for(int c = x; c < (x + tamano); c++)
 			m_original2[c][y] = 1;
