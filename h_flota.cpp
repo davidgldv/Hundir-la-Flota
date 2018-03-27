@@ -1,3 +1,5 @@
+//mejorar interfaz
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -19,17 +21,21 @@ int y, y2;
 int posicion;
 int barco;
 int tamano;
+int jugador = 0;
+bool rellanar = false;
 
 int main(){
 
-	for(int f = 0; f < N; f++)
-		for(int c = 0; c < N; c++){
-			m_original[f][c] = 0;
-			m_original2[f][c] = 0;
-		}
-
-
-	interfaz();
+	if(rellenar == false){
+		for(int f = 0; f < N; f++)
+			for(int c = 0; c < N; c++){
+				m_original[f][c] = 0;
+				m_original2[f][c] = 0;
+			}
+		rellenar = true;
+	}
+	
+	selecionar();
 
 	return EXIT_SUCCESS;
 }
@@ -67,48 +73,52 @@ void interfaz() {
 }
 
 void interfaz_j2() {
-        system("clear");
-        printf("\n");
-        printf("\t\t\t");
-        for(int f = 0; f < N; f++){
-                if(f <= 9 )
-                        printf("|%i ", f);
-                else
-                        printf("|%i", f);
-        }
-        printf("\n");
-        printf("\t\t\t");
-        for(int f = 0; f < N; f++)
-                printf("|__");
-        printf("\n");
-        printf("\t\t     ");
-        for(int f = 0; f < N; f++){
-                if( f <= 9)
-                        printf(" %i_|", f);
-                else
-                        printf(" %i|", f);
-                for(int c = 0; c < N; c++){
-                        printf("%i_|", m_original[f][c]);
-                }
-                printf("\n");
-                printf("\t\t     ");
-        }
+	system("clear");
+	printf("\n");
+	printf("\t\t\t");
+	for(int f = 0; f < N; f++){
+		if(f <= 9 )
+			printf("|%i ", f);
+		else
+			printf("|%i", f);
+	}
+	printf("\n");
+	printf("\t\t\t");
+	for(int f = 0; f < N; f++)
+		printf("|__");
+	printf("\n");
+	printf("\t\t     ");
+	for(int f = 0; f < N; f++){
+		if( f <= 9)
+			printf(" %i_|", f);
+		else
+			printf(" %i|", f);
+		for(int c = 0; c < N; c++){
+			printf("%i_|", m_original[f][c]);
+		}
+		printf("\n");
+		printf("\t\t     ");
+	}
 
-        seleccionar_j2();
+	seleccionar_j2();
 
 }
 
 
 void seleccionar() {
+
+	if(jugador == 0)
+		printf("JUGADOR 1");
+	else
+		printf("JUGADOR 2");
+
 	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
 	scanf(" %i", &posicion);
 	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
 	scanf(" %i", &barco);
 
-	if(barco == 1){
+	if(barco == 1)
 		tamano = 5;
-		barcos++;
-	}
 	if(barco == 2)
 		tamano = 4;
 	if(barco == 3)
@@ -136,21 +146,21 @@ void coor_j1 () {
 }
 
 void seleccionar_j2() {
-        printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
-        scanf(" %i", &posicion);
-        printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
-        scanf(" %i", &barco);
+	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
+	scanf(" %i", &posicion);
+	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
+	scanf(" %i", &barco);
 
-        if(barco == 1)
-                tamano = 5;
-        if(barco == 2)
-                tamano = 4;
-        if(barco == 3)
-                tamano = 3;
-        if(barco == 4)
-                tamano = 2;
+	if(barco == 1)
+		tamano = 5;
+	if(barco == 2)
+		tamano = 4;
+	if(barco == 3)
+		tamano = 3;
+	if(barco == 4)
+		tamano = 2;
 
-        coor_j2();
+	coor_j2();
 }
 
 
