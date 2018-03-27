@@ -10,8 +10,9 @@ void coor_j1();
 void seleccionar();
 
 int m_original[N][N];
-int x;
-int y;
+int m_original2[N][N];
+int x, x2;
+int y, y2;
 int posicion;
 int barco;
 int tamano;
@@ -89,7 +90,25 @@ void coor_j1 () {
 			m_original[c][y] = 1;
 	if(posicion == 2)
 		for(int c = y; c < (y + tamano); c++)
-                        m_original[x][c] = 1;
+			m_original[x][c] = 1;
+
+	interfaz();
+
+}
+
+void coor_j2 () {
+
+	printf("Coordenadas (Formato: (X,Y)): ");
+	scanf(" (%i,%i)", &x2, &y2);
+
+	if(posicion == 1)
+		for(int c = x; c < (x + tamano); c++)
+			m_original2[c][y] = 1;
+	if(posicion == 2)
+		for(int c = y; c < (y + tamano); c++)
+			m_original2[x][c] = 1;
 
 	interfaz();
 }
+
+
