@@ -71,7 +71,7 @@ void interfaz() {
 	seleccionar();
 
 }
-
+/*
 void interfaz_j2() {
 	system("clear");
 	printf("\n");
@@ -103,7 +103,7 @@ void interfaz_j2() {
 	seleccionar_j2();
 
 }
-
+*/
 
 void seleccionar() {
 
@@ -125,8 +125,6 @@ void seleccionar() {
 		tamano = 3;
 	if(barco == 4)
 		tamano = 2;
-
-	coor_j1();
 }
 
 void coor_j1 () {
@@ -145,25 +143,6 @@ void coor_j1 () {
 
 }
 
-void seleccionar_j2() {
-	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
-	scanf(" %i", &posicion);
-	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
-	scanf(" %i", &barco);
-
-	if(barco == 1)
-		tamano = 5;
-	if(barco == 2)
-		tamano = 4;
-	if(barco == 3)
-		tamano = 3;
-	if(barco == 4)
-		tamano = 2;
-
-	coor_j2();
-}
-
-
 void coor_j2 () {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
@@ -178,5 +157,4 @@ void coor_j2 () {
 
 	interfaz();
 }
-
 
