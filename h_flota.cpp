@@ -117,14 +117,18 @@ void seleccionar() {
 	printf("\n\t1) barco 5\n\t2) barco 4\n\t3) barco 3\n\t4) barco 2\n\tBarco: ");
 	scanf(" %i", &barco);
 
-	if(barco == 1)
+	if(barco == 1 && portaviones == 0)
 		tamano = 5;
-	if(barco == 2)
+		portaviones++;
+	if(barco == 2  && destructor < 2)
 		tamano = 4;
-	if(barco == 3)
+		destructor++;
+	if(barco == 3 && fragata == 0) 
 		tamano = 3;
-	if(barco == 4)
+		fragata++;
+	if(barco == 4 && crucero <2)
 		tamano = 2;
+		crucero++;
 }
 
 void coor_j1 () {
@@ -142,7 +146,16 @@ void coor_j1 () {
 	interfaz();
 
 }
-
+void TodosPuestos() {
+	if(portaviones == 0 && destructor == 2 && fragata ==1 && crucero == 2){
+		portaaviones=0;
+		desructor=0;
+		fragata=0;
+		crucero=0;
+	}
+	else
+	selecionar();
+}
 void coor_j2 () {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
