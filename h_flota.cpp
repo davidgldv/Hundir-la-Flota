@@ -34,7 +34,7 @@ int main(){
 	}
 	for(int j = 0 ; j < 2 ; j++){
 		//if(barco == 6 && jugador == 1)
-		jugador++;
+		//jugador++;
 		barco = 2;
 		//for(int c = 0 ; c < 5 ; c++){
 		interfaz();	
@@ -86,6 +86,9 @@ void interfaz() {
 }
 
 void seleccionar() {
+	if (barco == 6){
+		jugador++;
+	}	
 
 	if(jugador == 1)
 		printf("JUGADOR 1");
