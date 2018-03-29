@@ -87,7 +87,7 @@ void interfaz() {
 void seleccionar() {	
 	
 	if(barco == 6){
-		if(jugador == 2){
+		if(jugador < 2){
 		jugador++;
 		interfaz();
 		}
