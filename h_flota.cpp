@@ -137,5 +137,15 @@ void coor() {
 
 	interfaz();
 	seleccionar();
-
 }
+/*
+bool ganar(){
+	if (jugador == 1 && TODOS_TOCADOS){
+		printf("EL JUGADOR 1 ES EL GANADOR");
+	}
+	if (jugador == 2 && TODOS_TOCADOS){
+		printf("EL JUGADOR 1 ES EL GANADOR");
+	}
+}
+Esta funcion es para imprimir en pantalla quien a ganado y la condicion de todos tocados sera un booleano que indique verdadero cuando esten todos los barcos tocados
+*/
