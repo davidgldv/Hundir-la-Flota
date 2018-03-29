@@ -93,6 +93,11 @@ void seleccionar() {
 	scanf(" %i", &posicion);
 	
       /*Mañana declarar el valor del tamaño para los barcos*/
+	for (int c = 2 ; c<6  ; c++){
+		tamaño=c;
+		printf("Barco de tamaño %i", tamaño);
+		coor();
+	}	
 }
 
 void coor() {
