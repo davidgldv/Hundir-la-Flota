@@ -17,7 +17,7 @@ int y, y2;
 int posicion;
 int barco = 2;
 int tamano = 0;
-int jugador = 0;
+int jugador = 1;
 bool rellenar = false;
 bool jugador1 = false;
 
@@ -34,7 +34,6 @@ int main(){
 	}
 	for(int j = 0 ; j < 2 ; j++){
 		//if(barco == 6 && jugador == 1)
-		//jugador++;
 		barco = 2;
 		//for(int c = 0 ; c < 5 ; c++){
 		interfaz();	
@@ -85,10 +84,15 @@ void interfaz() {
 	}
 }
 
-void seleccionar() {
-	if (barco == 6){
+void seleccionar() {	
+	
+	if(barco == 6){
 		jugador++;
-	}	
+		interfaz();
+	}
+
+	if(jugador == 2 && barco == 6)
+		exit(1);
 
 	if(jugador == 1)
 		printf("JUGADOR 1");
@@ -99,12 +103,13 @@ void seleccionar() {
 	scanf(" %i", &posicion);
 
 	/*Mañana declarar el valor del tamaño para los barcos*/
-	if(barco >= 2 && barco < 6){
+	if(barco >= 2 && barco <= 5){
 		tamano=barco;
 		printf("Barco de tamaño %i\n", tamano);
 		barco++;
 		coor();
 	}
+
 }
 
 void coor() {
