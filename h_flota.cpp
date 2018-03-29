@@ -19,6 +19,7 @@ int barco = 2;
 int tamano = 0;
 int jugador = 0;
 bool rellenar = false;
+bool jugador1 = false;
 
 
 int main(){
@@ -32,10 +33,12 @@ int main(){
 		rellenar = true;
 	}
 	for(int j = 0 ; j < 2 ; j++){
+		//if(barco == 6 && jugador == 1)
 		jugador++;
+		barco = 2;
 		//for(int c = 0 ; c < 5 ; c++){
-			interfaz();	
-			seleccionar();
+		interfaz();	
+		seleccionar();
 		//}
 
 	}
@@ -98,7 +101,7 @@ void seleccionar() {
 		printf("Barco de tamaño %i\n", tamano);
 		barco++;
 		coor();
-	}	
+	}
 }
 
 void coor() {
@@ -114,7 +117,7 @@ void coor() {
 				m_original[x][c] = 1;
 	}
 
-	if(jugador ==2){
+	if(jugador == 2){
 		if(posicion == 1)
 			for(int c = x; c < (x + tamano); c++)
 				m_original2[c][y] = 1;
