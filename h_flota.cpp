@@ -5,11 +5,11 @@
 #include <unistd.h>
 #include <time.h>
 #define N 10
-
+x
 void interfaz();
 void coor();
 void seleccionar();
-
+void ganar();
 int m_original[N][N];
 int m_original2[N][N];
 int x, x2;
@@ -20,7 +20,8 @@ int tamano = 0;
 int jugador = 1;
 bool rellenar = false;
 bool jugador1 = false;
-
+bool TODOS_TOCADOS_1 = false;
+bool TODOS_TOCADOS_2 = false;
 
 int main(){
 
@@ -139,13 +140,31 @@ void coor() {
 	seleccionar();
 }
 /*
-bool ganar(){
-	if (jugador == 1 && TODOS_TOCADOS){
+void  ganar(){
+	if ( TODOS_TOCADOS_1){
 		printf("EL JUGADOR 1 ES EL GANADOR");
 	}
-	if (jugador == 2 && TODOS_TOCADOS){
+	if ( TODOS_TOCADOS_2){
 		printf("EL JUGADOR 1 ES EL GANADOR");
 	}
 }
 Esta funcion es para imprimir en pantalla quien a ganado y la condicion de todos tocados sera un booleano que indique verdadero cuando esten todos los barcos tocados
 */
+
+/*
+bool TODOS_TOCADOS_2(){
+		if ( m_original2 == m_juego2)
+			return true;
+		else
+			return false;
+}
+
+bool TODOS_TOCADOS_1(){
+		if ( m_original == m_juego)
+			return true;
+		else
+			return false;
+}
+
+*/
+
