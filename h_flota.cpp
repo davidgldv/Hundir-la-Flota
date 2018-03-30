@@ -5,13 +5,20 @@
 #include <unistd.h>
 #include <time.h>
 #define N 10
-x
+
 void interfaz();
 void coor();
 void seleccionar();
 void ganar();
+void comparar();
+
+
+
+
 int m_original[N][N];
 int m_original2[N][N];
+int m_juego[N][N];
+int m_juego2[N][N];
 int x, x2;
 int y, y2;
 int posicion;
@@ -19,6 +26,7 @@ int barco = 2;
 int tamano = 0;
 int jugador = 1;
 bool rellenar = false;
+bool rellenar1 = false;
 bool jugador1 = false;
 bool TODOS_TOCADOS_1 = false;
 bool TODOS_TOCADOS_2 = false;
@@ -86,15 +94,13 @@ void interfaz() {
 }
 
 void seleccionar() {	
-	
+
 	if(barco == 6){
 		if(jugador < 2){
-		jugador++;
-		interfaz();
+			jugador++;
+			interfaz();
 		}
 	}
-	if(jugador == 2 && barco == 6)
-		exit(1);
 
 	if(jugador == 1)
 		printf("JUGADOR 1");
@@ -110,6 +116,11 @@ void seleccionar() {
 		printf("Barco de tamaño %i\n", tamano);
 		barco++;
 		coor();
+	}
+
+	if(jugador == 2 && barco == 6){
+		jugador--;
+		comparar();
 	}
 
 }
@@ -139,32 +150,83 @@ void coor() {
 	interfaz();
 	seleccionar();
 }
-/*
-void  ganar(){
-	if ( TODOS_TOCADOS_1){
-		printf("EL JUGADOR 1 ES EL GANADOR");
+
+void comparar() {
+
+	if(rellenar1 == false){
+		for(int f = 0; f < N; f++)
+			for(int c = 0; c < N; c++){
+				m_juego[f][c] = 0;
+				m_juego2[f][c] = 0;
+			}
+		rellenar1 = true;
 	}
-	if ( TODOS_TOCADOS_2){
-		printf("EL JUGADOR 1 ES EL GANADOR");
+
+
+
+	if( jugador == 1) {
+		system("clear");
+		printf("\n");
+		printf("\t\t\t");
+		for(int f = 0; f < N; f++){
+			if(f <= 9 )
+				printf("|%i ", f);
+			else
+				printf("|%i", f);
+		}
+		printf("\n");
+		printf("\t\t\t");
+		for(int f = 0; f < N; f++)
+			printf("|__");
+		printf("\n");
+		printf("\t\t     ");
+		for(int f = 0; f < N; f++){
+			if( f <= 9)
+				printf(" %i_|", f);
+			else
+				printf(" %i|", f);
+			if(jugador == 1){
+				for(int c = 0; c < N; c++){
+					printf("%i_|", m_juego[f][c]);
+				}
+				printf("\n");
+				printf("\t\t     ");
+			}
+
+		}
 	}
+
 }
-Esta funcion es para imprimir en pantalla quien a ganado y la condicion de todos tocados sera un booleano que indique verdadero cuando esten todos los barcos tocados
-*/
+
+
+
 
 /*
-bool TODOS_TOCADOS_2(){
-		if ( m_original2 == m_juego2)
-			return true;
-		else
-			return false;
-}
+   void  ganar(){
+   if ( TODOS_TOCADOS_1){
+   printf("EL JUGADOR 1 ES EL GANADOR");
+   }
+   if ( TODOS_TOCADOS_2){
+   printf("EL JUGADOR 1 ES EL GANADOR");
+   }
+   }
+   Esta funcion es para imprimir en pantalla quien a ganado y la condicion de todos tocados sera un booleano que indique verdadero cuando esten todos los barcos tocados
+ */
 
-bool TODOS_TOCADOS_1(){
-		if ( m_original == m_juego)
-			return true;
-		else
-			return false;
-}
+/*
+   bool TODOS_TOCADOS_2(){
+   if ( m_original2 == m_juego2)
+   return true;
+   else
+   return false;
+   }
 
-*/
+   bool TODOS_TOCADOS_1(){
+   if ( m_original == m_juego)
+   return true;
+   else
+   return false;
+   }
+
+ */
 
