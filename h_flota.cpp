@@ -51,7 +51,7 @@ int main(){
 
 	}
 
-	if(jugador == 2 && barco == 5){
+	if(jugador == 2 && barco == 6){
                 jugador--;
                 comparar();
         }
@@ -210,7 +210,7 @@ void comparar() {
 			printf("Agua"); 
 
 	}
-
+	printf("\n");
 }
 
 
