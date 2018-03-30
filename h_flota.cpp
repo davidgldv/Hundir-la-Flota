@@ -51,6 +51,12 @@ int main(){
 
 	}
 
+	if(jugador == 2 && barco == 5){
+                jugador--;
+                comparar();
+        }
+
+
 	return EXIT_SUCCESS;
 }
 
@@ -118,11 +124,6 @@ void seleccionar() {
 		coor();
 	}
 
-	if(jugador == 2 && barco == 6){
-		jugador--;
-		comparar();
-	}
-
 }
 
 void coor() {
@@ -166,6 +167,11 @@ void comparar() {
 
 	if( jugador == 1) {
 		system("clear");
+
+
+		printf("\n\t\t\tJUGADOR 1");
+
+
 		printf("\n");
 		printf("\t\t\t");
 		for(int f = 0; f < N; f++){
@@ -194,6 +200,15 @@ void comparar() {
 			}
 
 		}
+
+		 printf("Coordenadas (Formato: (X,Y)): ");
+		 scanf(" (%i,%i)", &x, &y);
+
+		if(m_original2[x][y] == 1)
+			printf("Tocado");
+		else
+			printf("Agua"); 
+
 	}
 
 }
