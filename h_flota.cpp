@@ -41,20 +41,17 @@ int main(){
 			}
 		rellenar = true;
 	}
-	for(int j = 0 ; j < 2 ; j++){
-		//if(barco == 6 && jugador == 1)
-		barco = 2;
-		//for(int c = 0 ; c < 5 ; c++){
-		interfaz();	
-		seleccionar();
-		//}
 
+	interfaz();
+	seleccionar();
+
+	if(barco == 6){
+		if(jugador == 2){
+			jugador--;
+			sleep(3);
+			comparar();
+		}
 	}
-
-	if(jugador == 2 && barco == 6){
-                jugador--;
-                comparar();
-        }
 
 
 	return EXIT_SUCCESS;
@@ -103,7 +100,9 @@ void seleccionar() {
 
 	if(barco == 6){
 		if(jugador < 2){
+			sleep(3);
 			jugador++;
+			barco = 2;
 			interfaz();
 		}
 	}
@@ -128,6 +127,8 @@ void seleccionar() {
 
 void coor() {
 
+
+
 	printf("Coordenadas (Formato: (X,Y)): ");
 	scanf(" (%i,%i)", &x, &y);
 	if(jugador == 1){
@@ -147,6 +148,13 @@ void coor() {
 			for(int c = y; c < (y + tamano); c++)
 				m_original2[x][c] = 1;
 	}
+	
+	if(barco == 6 && jugador == 2){
+                jugador--;
+                sleep(3);
+                comparar();
+        }
+
 
 	interfaz();
 	seleccionar();
@@ -201,8 +209,8 @@ void comparar() {
 
 		}
 
-		 printf("Coordenadas (Formato: (X,Y)): ");
-		 scanf(" (%i,%i)", &x, &y);
+		printf("Coordenadas (Formato: (X,Y)): ");
+		scanf(" (%i,%i)", &x, &y);
 
 		if(m_original2[x][y] == 1)
 			printf("Tocado");
@@ -211,6 +219,7 @@ void comparar() {
 
 	}
 	printf("\n");
+	exit(1);
 }
 
 
