@@ -27,6 +27,7 @@ int tamano = 0;
 int contador_j1;
 int contador_j2;
 int jugador = 1;
+int ganador;
 bool rellenar = false;
 bool rellenar1 = false;
 
@@ -130,16 +131,16 @@ void coor() {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
 	scanf(" (%i,%i)", &x, &y);
-	
+
 	if(jugador == 1 && m_original[x][y] == 1) {
-		printf("Ya hay un barco en esa posición");
+		printf("Ya hay un barco en esa posición\n");
 		coor();
 	}
 
 	if(jugador == 2 && m_original2[x][y] == 1) {
-                printf("Ya hay un barco en esa posición");
-                coor();
-        }
+		printf("Ya hay un barco en esa posición\n");
+		coor();
+	}
 
 
 	if(jugador == 1 && m_original[x][y] != 1){
@@ -160,12 +161,12 @@ void coor() {
 			for(int c = y; c < (y + tamano); c++)
 				m_original2[x][c] = 1;
 	}
-	
+
 	if(barco == 6 && jugador == 2){
-                jugador--;
-                sleep(3);
-                comparar();
-        }
+		jugador--;
+		sleep(3);
+		comparar();
+	}
 
 
 	interfaz();
@@ -190,6 +191,7 @@ void comparar() {
 
 
 		printf("\n\t\t\tJUGADOR 1");
+		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua");
 
 
 		printf("\n");
@@ -224,80 +226,98 @@ void comparar() {
 		printf("Coordenadas (Formato: (X,Y)): ");
 		scanf(" (%i,%i)", &x, &y);
 
-		if(m_original2[x][y] == 1){
-			printf("Tocado");
-			contador_j1++;
-			m_juego[x][y] = 1;
-		}else{
-			printf("Agua");
-			jugador++;
-		}
+		if(m_juego[x][y] == 1 || m_juego[x][y] == 2)
+			printf("Coordenada ya dicha");
+
+
+		if(m_juego[x][y] == 0)
+			if(m_original2[x][y] == 1){
+				printf("Tocado");
+				contador_j1++;
+				m_juego[x][y] = 1;
+			}else{
+				printf("Agua");
+				m_juego[x][y] = 2;
+				jugador++;
+			}
 		comparar();
 	}
-	 if( jugador == 2) {
-                system("clear");
+	if( jugador == 2) {
+		system("clear");
 
 
-                printf("\n\t\t\tJUGADOR 2");
+		printf("\n\t\t\tJUGADOR 2");
+		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua");
 
 
-                printf("\n");
-                printf("\t\t\t");
-                for(int f = 0; f < N; f++){
-                        if(f <= 9 )
-                                printf("|%i ", f);
-                        else
-                                printf("|%i", f);
-                }
-                printf("\n");
-                printf("\t\t\t");
-                for(int f = 0; f < N; f++)
-                        printf("|__");
-                printf("\n");
-                printf("\t\t     ");
-                for(int f = 0; f < N; f++){
-                        if( f <= 9)
-                                printf(" %i_|", f);
-                        else
-                                printf(" %i|", f);
-                        if(jugador == 2){
-                                for(int c = 0; c < N; c++){
-                                        printf("%i_|", m_juego2[f][c]);
-                                }
-                                printf("\n");
-                                printf("\t\t     ");
-                        }
-
-                }
-
-                printf("Coordenadas (Formato: (X,Y)): ");
-                scanf(" (%i,%i)", &x, &y);
-
-                if(m_original[x][y] == 1){
-                        printf("Tocado");
-			m_juego2[x][y] = 1;
-                        contador_j2++;
-                }else{
-                        printf("Agua");
-                        jugador--;
+		printf("\n");
+		printf("\t\t\t");
+		for(int f = 0; f < N; f++){
+			if(f <= 9 )
+				printf("|%i ", f);
+			else
+				printf("|%i", f);
 		}
+		printf("\n");
+		printf("\t\t\t");
+		for(int f = 0; f < N; f++)
+			printf("|__");
+		printf("\n");
+		printf("\t\t     ");
+		for(int f = 0; f < N; f++){
+			if( f <= 9)
+				printf(" %i_|", f);
+			else
+				printf(" %i|", f);
+			if(jugador == 2){
+				for(int c = 0; c < N; c++){
+					printf("%i_|", m_juego2[f][c]);
+				}
+				printf("\n");
+				printf("\t\t     ");
+			}
+
+		}
+
+		printf("Coordenadas (Formato: (X,Y)): ");
+		scanf(" (%i,%i)", &x, &y);
+
+		if(m_juego2[x][y] == 1 || m_juego2[x][y] == 2)
+			printf("Coordenada ya dicha"); 
+
+		if(m_juego[x][y] == 0)
+			if(m_original[x][y] == 1){
+				printf("Tocado");
+				m_juego2[x][y] = 1;
+				contador_j2++;
+			}else{
+				printf("Agua");
+				m_juego2[x][y] = 2;
+				jugador--;
+			}
 		comparar();
-        }
+	}
 
 	printf("\n");
 
-/*	if(contador_j1 == 14)
+	if(contador_j1 == 14){
+		ganador = 1;
 		ganar();
-	if(contador_j2 == 14)
-		ganar();*/
+	}
+	if(contador_j2 == 14){
+		ganador = 2;
+		ganar();
+	}
 }
 
 
 
 
-/*
-   void  ganar(){
-   Esta funcion es para imprimir en pantalla quien a ganado y la condicion de todos tocados sera un booleano que indique verdadero cuando esten todos los barcos tocados
-}
 
- */
+void  ganar(){
+	
+	printf("Eljugador %i es el ganador", ganador);
+
+   }
+
+
