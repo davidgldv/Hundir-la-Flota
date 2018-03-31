@@ -130,16 +130,29 @@ void coor() {
 
 	printf("Coordenadas (Formato: (X,Y)): ");
 	scanf(" (%i,%i)", &x, &y);
-	if(jugador == 1){
+	
+	if(jugador == 1 && m_original[x][y] == 1) {
+		printf("Ya hay un barco en esa posición");
+		coor();
+	}
+
+	if(jugador == 2 && m_original2[x][y] == 1) {
+                printf("Ya hay un barco en esa posición");
+                coor();
+        }
+
+
+	if(jugador == 1 && m_original[x][y] != 1){
 		if(posicion == 1)
 			for(int c = x; c < (x + tamano); c++)
 				m_original[c][y] = 1;
 		if(posicion == 2)
 			for(int c = y; c < (y + tamano); c++)
 				m_original[x][c] = 1;
+
 	}
 
-	if(jugador == 2){
+	if(jugador == 2 && m_original2[x][y] != 1){
 		if(posicion == 1)
 			for(int c = x; c < (x + tamano); c++)
 				m_original2[c][y] = 1;
@@ -219,14 +232,13 @@ void comparar() {
 			printf("Agua");
 			jugador++;
 		}
+		comparar();
 	}
-	comparar();
-
 	 if( jugador == 2) {
                 system("clear");
 
 
-                printf("\n\t\t\tJUGADOR 1");
+                printf("\n\t\t\tJUGADOR 2");
 
 
                 printf("\n");
@@ -273,6 +285,11 @@ void comparar() {
         }
 
 	printf("\n");
+
+/*	if(contador_j1 == 14)
+		ganar();
+	if(contador_j2 == 14)
+		ganar();*/
 }
 
 
