@@ -240,7 +240,6 @@ void comparar() {
 				m_juego[x][y] = 2;
 				jugador++;
 			}
-		comparar();
 	}
 	if( jugador == 2) {
 		system("clear");
@@ -295,7 +294,6 @@ void comparar() {
 				m_juego2[x][y] = 2;
 				jugador--;
 			}
-		comparar();
 	}
 
 	printf("\n");
@@ -308,6 +306,8 @@ void comparar() {
 		ganador = 2;
 		ganar();
 	}
+
+	comparar();
 }
 
 
@@ -316,7 +316,9 @@ void comparar() {
 
 void  ganar(){
 	
-	printf("Eljugador %i es el ganador", ganador);
+	system("clear");
+	printf("\n\t\t\tEljugador %i es el ganador", ganador);
+	exit(1);
 
    }
 
