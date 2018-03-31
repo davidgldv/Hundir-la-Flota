@@ -284,7 +284,7 @@ void comparar() {
 		if(m_juego2[x][y] == 1 || m_juego2[x][y] == 2)
 			printf("Coordenada ya dicha\n"); 
 
-		if(m_juego[x][y] == 0)
+		if(m_juego2[x][y] == 0)
 			if(m_original[x][y] == 1){
 				printf("Tocado");
 				m_juego2[x][y] = 1;
