@@ -191,7 +191,7 @@ void comparar() {
 
 
 		printf("\n\t\t\tJUGADOR 1");
-		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua");
+		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua\n");
 
 
 		printf("\n");
@@ -227,7 +227,7 @@ void comparar() {
 		scanf(" (%i,%i)", &x, &y);
 
 		if(m_juego[x][y] == 1 || m_juego[x][y] == 2)
-			printf("Coordenada ya dicha");
+			printf("Coordenada ya dicha\n");
 
 
 		if(m_juego[x][y] == 0)
@@ -247,7 +247,7 @@ void comparar() {
 
 
 		printf("\n\t\t\tJUGADOR 2");
-		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua");
+		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua\n");
 
 
 		printf("\n");
@@ -283,7 +283,7 @@ void comparar() {
 		scanf(" (%i,%i)", &x, &y);
 
 		if(m_juego2[x][y] == 1 || m_juego2[x][y] == 2)
-			printf("Coordenada ya dicha"); 
+			printf("Coordenada ya dicha\n"); 
 
 		if(m_juego[x][y] == 0)
 			if(m_original[x][y] == 1){
