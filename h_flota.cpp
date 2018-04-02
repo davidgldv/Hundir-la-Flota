@@ -15,7 +15,13 @@ void comparar();
 
 
 
-
+char barcos[4][12] = {
+	"crucero",
+	"fragata",
+	"destructor",
+	"portaviones"
+};
+int c_barcos = 0;
 int m_original[N][N];
 int m_original2[N][N];
 int m_juego[N][N];
@@ -107,10 +113,12 @@ void interfaz() {
 
 void seleccionar() {	
 
+
 	if(barco == 6){
 		if(jugador < 2){
 			sleep(3);
 			jugador++;
+			c_barcos = 0;
 			barco = 2;
 			interfaz();
 		}
@@ -127,7 +135,8 @@ void seleccionar() {
 
 	if(barco >= 2 && barco <= 5){
 		tamano=barco;
-		printf("Barco de tamaño %i\n", tamano);
+		printf("%s\n", barcos[c_barcos]);
+		c_barcos++;
 		barco++;
 		coor();
 	}
@@ -323,10 +332,12 @@ void comparar() {
 
 	if(contador_j1 == 14){
 		ganador = 1;
+		sleep(3);
 		ganar();
 	}
 	if(contador_j2 == 14){
 		ganador = 2;
+		sleep(3);
 		ganar();
 	}
 	
@@ -340,6 +351,7 @@ void comparar() {
 
 void  ganar(){
 
+	system("clear");
 	system("clear");
 	printf("\n\t\t\tEljugador %i es el ganador\n", ganador);
 	exit(1);
