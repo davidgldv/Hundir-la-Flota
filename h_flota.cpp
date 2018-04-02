@@ -1,4 +1,4 @@
-//mejorar interfaz
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -124,7 +124,7 @@ void seleccionar() {
 	printf("\n\t1) Vertical\n\t2) Horizontal\n\tPosición: ");
 	scanf(" %i", &posicion);
 
-	/*Mañana declarar el valor del tamaño para los barcos*/
+
 	if(barco >= 2 && barco <= 5){
 		tamano=barco;
 		printf("Barco de tamaño %i\n", tamano);
