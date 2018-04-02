@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+
 #define N 10
 
 void interfaz();
@@ -63,7 +64,7 @@ void interfaz() {
 	printf("\t\t\t");
 	for(int f = 0; f < N; f++){
 		if(f <= 9 )
-			printf("|%i ", f);
+			printf("\033[33m|%i ", f);
 		else
 			printf("|%i", f);
 	}
@@ -80,15 +81,23 @@ void interfaz() {
 			printf(" %i|", f);
 		if(jugador == 1){
 			for(int c = 0; c < N; c++){
-				printf("%i_|", m_original[f][c]);
+				if(m_original[f][c] == 0)
+					printf("\033[34m%i\033[33m_|", m_original[f][c]);
+				if(m_original[f][c] == 1)
+					printf("\033[31m%i\033[33m_|", m_original[f][c]);
 			}
+
 			printf("\n");
 			printf("\t\t     ");
 		}	
 
 		if(jugador == 2){
 			for(int c = 0; c < N; c++){
-				printf("%i_|", m_original2[f][c]);
+				if(m_original2[f][c] == 0)
+					printf("\033[34m%i\033[33m_|", m_original2[f][c]);
+				if(m_original2[f][c] == 1)
+					printf("\033[31m%i\033[33m_|", m_original2[f][c]);
+
 			}
 			printf("\n");
 			printf("\t\t     ");
@@ -162,14 +171,15 @@ void coor() {
 				m_original2[x][c] = 1;
 	}
 
-	if(barco == 6 && jugador == 2){
-		jugador--;
-		sleep(3);
-		comparar();
-	}
-
-
 	interfaz();
+
+	 if(barco == 6 && jugador == 2){
+                jugador--;
+                sleep(3);
+                comparar();
+        }
+
+
 	seleccionar();
 }
 
@@ -191,7 +201,7 @@ void comparar() {
 
 
 		printf("\n\t\t\tJUGADOR 1");
-		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua\n");
+		printf("\n\t\t\t\033[31m1 = tocado; \n\t\t\t\033[34m2 = Agua\033[33m\n");
 
 
 		printf("\n");
@@ -215,7 +225,13 @@ void comparar() {
 				printf(" %i|", f);
 			if(jugador == 1){
 				for(int c = 0; c < N; c++){
-					printf("%i_|", m_juego[f][c]);
+					if(m_juego[f][c] == 0)
+						printf("\033[30m%i\033[33m_|", m_juego[f][c]);
+					if(m_juego[f][c] == 1)
+						printf("\033[31m%i\033[33m_|", m_juego[f][c]);
+					if(m_juego[f][c] == 2)
+                                                printf("\033[34m%i\033[33m_|", m_juego[f][c]);
+
 				}
 				printf("\n");
 				printf("\t\t     ");
@@ -227,16 +243,16 @@ void comparar() {
 		scanf(" (%i,%i)", &x, &y);
 
 		if(m_juego[x][y] == 1 || m_juego[x][y] == 2)
-			printf("Coordenada ya dicha\n");
+			printf("\n\t\t\tCoordenada ya dicha");
 
 
 		if(m_juego[x][y] == 0)
 			if(m_original2[x][y] == 1){
-				printf("Tocado");
+				printf("\n\t\t\t\033[31mTocado\033[33m");
 				contador_j1++;
 				m_juego[x][y] = 1;
 			}else{
-				printf("Agua");
+				printf("\n\t\t\t\033[34mAgua\033[33m");
 				m_juego[x][y] = 2;
 				jugador++;
 			}
@@ -246,7 +262,7 @@ void comparar() {
 
 
 		printf("\n\t\t\tJUGADOR 2");
-		printf("\n\t\t\t1 = tocado; \n\t\t\t2 = Agua\n");
+		printf("\n\t\t\t\033[31m1 = tocado; \n\t\t\t\033[34m2 = Agua\033[33m\n");
 
 
 		printf("\n");
@@ -270,7 +286,14 @@ void comparar() {
 				printf(" %i|", f);
 			if(jugador == 2){
 				for(int c = 0; c < N; c++){
-					printf("%i_|", m_juego2[f][c]);
+					if(m_juego2[f][c] == 0)
+                                                printf("\033[30m%i\033[33m_|", m_juego2[f][c]);
+                                        if(m_juego2[f][c] == 1)
+                                                printf("\033[31m%i\033[33m_|", m_juego2[f][c]);
+                                        if(m_juego2[f][c] == 2)
+                                                printf("\033[34m%i\033[33m_|", m_juego2[f][c]);
+
+
 				}
 				printf("\n");
 				printf("\t\t     ");
@@ -281,22 +304,22 @@ void comparar() {
 		printf("Coordenadas (Formato: (X,Y)): ");
 		scanf(" (%i,%i)", &x, &y);
 
-		if(m_juego2[x][y] == 1 || m_juego2[x][y] == 2)
-			printf("Coordenada ya dicha\n"); 
+		if(m_juego2[x][y] == 1 || m_juego2[x][y] == 2){
+			printf("\n\t\t\tCoordenada ya dicha");
+		} 
 
-		if(m_juego[x][y] == 0)
+		if(m_juego2[x][y] == 0)
 			if(m_original[x][y] == 1){
-				printf("Tocado");
+				printf("\n\t\t\t\033[31mTocado\033[33m");
 				m_juego2[x][y] = 1;
 				contador_j2++;
 			}else{
-				printf("Agua");
+				printf("\n\t\t\t\033[34mAgua\033[33m");
 				m_juego2[x][y] = 2;
 				jugador--;
 			}
 	}
 
-	printf("\n");
 
 	if(contador_j1 == 14){
 		ganador = 1;
@@ -306,8 +329,9 @@ void comparar() {
 		ganador = 2;
 		ganar();
 	}
-
+	
 	comparar();
+
 }
 
 
@@ -315,11 +339,11 @@ void comparar() {
 
 
 void  ganar(){
-	
+
 	system("clear");
-	printf("\n\t\t\tEljugador %i es el ganador", ganador);
+	printf("\n\t\t\tEljugador %i es el ganador\n", ganador);
 	exit(1);
 
-   }
+}
 
 
